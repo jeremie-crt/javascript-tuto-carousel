@@ -18,10 +18,10 @@ class Carousel {
         this.element = element
 
         //A l'instanciation si les options ne sont pas définis, alors erreur
-        //Obliger de creer un objet avec les options par défaut
-        //On fusione cet objet là avec des valeurs par défaut
-        //1 - Un objet vide qui va obtenir les proprietes deja fusionnees
-        //2 - Les proprietes par défaut
+        //Obliger de créer un objet avec les options par défaut
+        //On fusionne cet objet là avec des valeurs par défaut
+        //1 - Un objet vide qui va obtenir les propriétés deja fusionnées
+        //2 - Les propriétés par défaut
         //3 - autres options...
         this.options = Object.assign({}, {
             slidesToScroll: 1,
@@ -35,13 +35,12 @@ class Carousel {
         this.currentItem = 0
         this.moveCallBacks = []
 
-
         this.root = this.createDivWithClass('carousel')
         this.container = this.createDivWithClass('carousel__container')
         this.root.setAttribute('tabindex', '0')
         this.root.appendChild(this.container)
         this.element.appendChild(this.root)
-        //This réfère to this.element - fonction fléché pour avoir le this sur la classe
+        //This référe to this.element - fonction fléché pour avoir le this sur la classe
         this.items = children.map((child) => {
             let item = this.createDivWithClass('carousel__item')
             item.appendChild(child)
@@ -76,7 +75,7 @@ class Carousel {
     }
 
     /**
-     *Applique les bonnes dimensions aux éléments du carousel
+     *Applique les bonne dimensions aux éléments du carousel
      */
     setStyle() {
         let ratio = this.items.length / this.slidesVisible
@@ -145,7 +144,6 @@ class Carousel {
         let translateX = index * -100 / this.items.length
         this.container.style.transform = 'translate3d('+ translateX + '%, 0, 0)'
         this.currentItem = index
-
         this.moveCallBacks.forEach(cb => cb(index))
     }
 
@@ -183,9 +181,6 @@ class Carousel {
         return this.isMobile ? 1 : this.options.slidesVisible
     }
 }
-
-
-
 
 
 if( document.readyState !== 'loading' ) {
